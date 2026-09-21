@@ -1,0 +1,17 @@
+format: jb-book
+root: intro
+options:
+  numbered: false
+chapters:
+  - file: foundations
+    title: 1 · Foundations & Bachelier
+  - file: european-models
+    title: 2 · BSM & Black-76
+  - file: lattice-models
+    title: 3 · Lattice Models
+  - file: american-approximations
+    title: 4 · American Approximations
+  - file: unifying-theory
+    title: 5 · Unifying Theory
+  - file: glossary
+    title: อภิธานศัพท์

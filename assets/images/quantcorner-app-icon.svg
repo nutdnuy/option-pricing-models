@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">QuantCorner app icon</title>
+  <desc id="desc">The QuantCorner research-frame Q on a deep editorial green tile.</desc>
+  <rect width="160" height="160" rx="36" fill="#173C2C" />
+  <g transform="translate(16 16)">
+    <path
+      d="M47 9H71C94.196 9 113 27.804 113 51V84H88V52C88 41.507 79.493 33 69 33H51C40.507 33 32 41.507 32 52V73C32 85.703 42.297 96 55 96H76V120H54C28.043 120 7 98.957 7 73V50C7 27.356 24.804 9 47 9Z"
+      fill="#F5F3ED"
+    />
+    <path d="M72 74H101V103H82V94H72Z" fill="#F5F3ED" />
+    <circle cx="111" cy="111" r="10" fill="#69F0AE" />
+  </g>
+</svg>

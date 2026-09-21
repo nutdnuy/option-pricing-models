@@ -1,0 +1,12 @@
+title: Option Pricing Models
+author: Triphop Mahithitarmmatorn
+language: th
+logo: assets/images/quantcorner-horizontal-transparent-offwhite-1024.png
+logo_secondary: assets/images/quantsera-horizontal-transparent-offwhite-1024.png
+logo_alt: QuantCorner / Quantsera บนพื้นหลังสีดำ
+download:
+  label: ดาวน์โหลดต้นฉบับ PDF
+  path: downloads/option-pricing-models.pdf
+repository:
+  url: https://github.com/nutdnuy/option-pricing-models
+  branch: main
