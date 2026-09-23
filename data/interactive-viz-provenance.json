@@ -1,0 +1,39 @@
+{
+  "date": "2026-09-23",
+  "route": "no-image-generator",
+  "data": "All examples are hypothetical model calculations; no market data or random sampling.",
+  "units": "Prices per one underlying unit; time in years with 365 days; UI volatility and rates in %, internal decimals; IV shifts in percentage points.",
+  "labs": [
+    {
+      "url": "foundations.html#payoff-lab",
+      "title": "Payoff vs profit",
+      "method": "Signed intrinsic payoff and profit after the user-specified premium; no financing or fees."
+    },
+    {
+      "url": "foundations.html#distribution-lab",
+      "title": "Normal vs lognormal",
+      "method": "Analytic risk-neutral GBM terminal density and a Normal/ABM endpoint with equal mean and normal volatility S0*sigma; tails cropped only for chart display."
+    },
+    {
+      "url": "lattice-models.html#tree-lab",
+      "title": "Binomial tree",
+      "method": "CRR up=exp(sigma*sqrt(dt)), down=1/up, q=(exp(r*dt)-down)/(up-down); backward induction and American exercise max. No dividend."
+    },
+    {
+      "url": "lattice-models.html#convergence-lab",
+      "title": "Convergence",
+      "method": "European CRR versus BSM Call/Put with identical parameters, prices at steps 5,10,...,N."
+    }
+  ],
+  "sources": [
+    "Existing lesson equations and independent algebraic/benchmark tests.",
+    "https://github.com/lballabio/QuantLib/blob/master/ql/methods/lattices/binomialtree.cpp"
+  ],
+  "implementation": "Original implementation. No upstream source code copied. Existing React, KaTeX, SVG chart controls and locally bundled fonts reused.",
+  "verification": [
+    "qa/viz-math-checks.mjs",
+    "qa/viz-browser-checks.cjs",
+    "npm run build:pages",
+    "npm run check:site"
+  ]
+}

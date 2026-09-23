@@ -106,3 +106,24 @@
 .table-scroll [id="tab:vrp_summary"]{min-width:960px}
 .table-scroll:focus-visible{outline:3px solid var(--primary);outline-offset:3px}
 @media print{.table-scroll{overflow:visible}.table-scroll table,.table-scroll [id="tab:vrp_summary"]{min-width:0;font-size:10px}}
+
+/* Interactive lessons: native computed SVG, QuantCorner no-image-generator route. */
+.viz-lab{position:relative;scroll-margin-top:88px}
+.viz-lab .lab-title{padding-right:72px}
+.viz-reset{position:absolute;top:24px;right:20px;font-size:12px}
+.viz-choice{margin:12px 0 20px}.viz-choice label{display:block;font-size:14px;margin-bottom:8px}.viz-choice select{width:100%;max-width:100%}
+.viz-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px}
+.viz-stats strong{font-size:clamp(19px,3vw,28px)!important;overflow-wrap:anywhere}
+.viz-legend{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;margin:24px 0 4px}
+.viz-legend>span{display:inline-flex;align-items:center;gap:8px}
+.viz-key{display:inline-block;width:24px;border-top:3px solid var(--primary)}
+.viz-key-1{border-color:var(--text);border-top-style:dashed}.viz-key-2{border-color:var(--primary);border-top-style:dotted}
+.viz-line-0{stroke:var(--primary)}.viz-line-1{stroke:var(--text);stroke-dasharray:8 5}.viz-line-2{stroke:var(--primary);stroke-dasharray:2 5;stroke-width:3}
+.viz-data{font-size:13px;margin-top:12px}.viz-data summary{cursor:pointer;min-height:48px;padding:12px 0}.viz-data table{font-size:12px}
+.viz-tree-scroll{overflow-x:auto;max-width:100%;border:1px solid var(--grid);border-radius:6px;margin:24px 0}
+.viz-tree-scroll:focus-visible{outline:3px solid var(--primary);outline-offset:3px}
+.viz-tree-scroll svg{display:block;width:100%;min-width:760px;height:430px}.viz-tree-scroll text{font-size:11px;fill:var(--text)}
+.viz-tree-edge{stroke:var(--border);stroke-width:1.5}.viz-node{fill:var(--surface);stroke:var(--primary)}.viz-node.exercise{fill:var(--bg);stroke:var(--text);stroke-dasharray:3 2}
+.viz-lab input[type=range]{width:100%}.interactive-mount{scroll-margin-top:90px}
+.viz-directory{padding:24px;background:var(--surface);border-radius:6px;margin:32px 0}.viz-directory ul{margin:12px 0}.viz-directory a{display:inline-flex;min-height:48px;align-items:center}
+@media(max-width:600px){.viz-lab .lab-title{padding-right:0}.viz-reset{position:static;margin-bottom:16px}.viz-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.viz-legend{gap:8px}.viz-lab .controls.two{grid-template-columns:1fr}}

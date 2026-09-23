@@ -102,3 +102,13 @@ inline_math: true
 <img src="assets/images/source-figures/convergence.png" alt="กราฟความคลาดเคลื่อนของ Binomial และ Trinomial เทียบกับจำนวนขั้น" />
 <figcaption>รูปที่ 3 · ความคลาดเคลื่อนสัมบูรณ์ <span class="math inline">|<em>Ĉ</em><sub><em>N</em></sub> − <em>C</em><sub>BS</sub>|</span> ของการกำหนดราคาออปชันซื้อแบบยุโรป (พารามิเตอร์คงที่: <span class="math inline"><em>S</em><sub>0</sub> = <em>K</em> = 100</span>, <span class="math inline"><em>r</em> = 0.05</span>, <span class="math inline"><em>σ</em> = 0.20</span>, <span class="math inline"><em>T</em> = 1</span>) เทียบกับจำนวนขั้น <span class="math inline"><em>N</em></span> ในมาตราส่วนกึ่งล็อก สังเกตการแกว่งแบบฟันเลื่อยของต้นไม้ทวินาม (เส้นทึบ) เทียบกับการลู่เข้าที่ราบเรียบและเร็วกว่าของต้นไม้ไตรนาม (เส้นประ) ซึ่งสอดคล้องกับการวิเคราะห์เชิงทฤษฎี.</figcaption>
 </figure>
+
+
+## ทดลองต้นไม้ Binomial
+
+<div id="tree-lab" class="interactive-mount"><p>เปิด JavaScript เพื่อปรับค่าห้องทดลองนี้ สมการและตัวอย่างในบทอ่านได้ตามปกติ</p></div>
+
+
+## จำนวนขั้นและการลู่เข้า
+
+<div id="convergence-lab" class="interactive-mount"><p>เปิด JavaScript เพื่อปรับค่าห้องทดลองนี้ สมการและตัวอย่างในบทอ่านได้ตามปกติ</p></div>

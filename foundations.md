@@ -54,3 +54,13 @@ inline_math: true
 \end{equation*}$$ โดยใช้ความเป็นฟังก์ชันคู่ $\varphi(-d)=\varphi(d)$. รวมทั้งสองเทอมและคูณด้วยตัวประกอบคิดลด $\mathrm{e}^{-rT}$ ได้ [eq:bachelier-call] ตามต้องการ. ◻
 
 *Remark 4*. คุณสมบัติเด่นของ [eq:bachelier-call] คือมูลค่ายังคงนิยามได้แม้ $F_0<0$ หรือ $K<0$ ซึ่งเป็นเหตุผลที่ CME เลือกใช้แบบจำลองนี้ในช่วงราคาน้ำมันติดลบ ต่างจากแบบจำลองแบล็ก-โชลส์ที่ต้องการ $\ln(F_0/K)$ และจึงไม่นิยามเมื่อราคาติดลบ.
+
+
+## Payoff และกำไรขาดทุน
+
+<div id="payoff-lab" class="interactive-mount"><p>เปิด JavaScript เพื่อปรับค่าห้องทดลองนี้ สมการและตัวอย่างในบทอ่านได้ตามปกติ</p></div>
+
+
+## Normal กับ Lognormal
+
+<div id="distribution-lab" class="interactive-mount"><p>เปิด JavaScript เพื่อปรับค่าห้องทดลองนี้ สมการและตัวอย่างในบทอ่านได้ตามปกติ</p></div>

@@ -29,6 +29,8 @@ description: แบบจำลองการกำหนดราคาออ�
 <article class="welcome-lesson"><span class="welcome-lesson-number">05</span><div><p class="welcome-lesson-label">ภาพเดียวที่เชื่อมทุกแบบจำลอง</p><h3><a href="unifying-theory.html">Unifying Theory</a></h3><p>Feynman–Kac, Green function และความสัมพันธ์ระหว่างออปชันยุโรปกับอเมริกัน</p><p class="welcome-topics">PDE ↔ Expectation · Green function · No-arbitrage</p><a class="welcome-text-link" href="unifying-theory.html">อ่านตอนนี้ →</a></div></article>
 </div>
 
+<div class="viz-directory"><h2>Interactive labs · ทดลองได้ 5 ชุด</h2><p>ปรับพารามิเตอร์ ดูกราฟ และอ่านผลคำนวณจากสถานการณ์สมมติ</p><ul><li><a href="european-models.html#option-model-lab">Option model explorer</a></li><li><a href="foundations.html#payoff-lab">Payoff และกำไรขาดทุน</a></li><li><a href="foundations.html#distribution-lab">Normal กับ Lognormal</a></li><li><a href="lattice-models.html#tree-lab">ทดลองต้นไม้ Binomial</a></li><li><a href="lattice-models.html#convergence-lab">จำนวนขั้นและการลู่เข้า</a></li></ul></div>
+
 <!-- author-profile -->
 
 <div class="welcome-resources"><h3>ต้นฉบับ</h3><p>เรียบเรียงจากบทความ “แบบจำลองการกำหนดราคาออปชัน: จากบาเชอลิเยถึงการประมาณค่าออปชันแบบอเมริกัน” โดย Triphop Mahithitarmmatorn</p><div class="welcome-download"><a href="downloads/option-pricing-models.pdf" download>ดาวน์โหลด PDF</a><a href="foundations.md" download>ดาวน์โหลด Markdown ตอนแรก</a></div></div>

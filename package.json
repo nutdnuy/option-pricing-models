@@ -5,9 +5,9 @@
   "scripts": {
     "build": "node build.cjs",
     "build:pages": "npm run build && node scripts/export-pages.cjs && node qa/reference-checks.cjs",
-    "test": "node qa/math-checks.mjs",
+    "test": "node qa/math-checks.mjs && node qa/viz-math-checks.mjs",
     "dev": "PORT=8766 node serve.cjs",
-    "check:site": "node qa/site-checks.cjs && node qa/option-lab-checks.cjs"
+    "check:site": "node qa/site-checks.cjs && node qa/option-lab-checks.cjs && node qa/viz-browser-checks.cjs"
   },
   "engines": {
     "node": ">=22"
