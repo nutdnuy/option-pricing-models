@@ -10,3 +10,13 @@ download:
 repository:
   url: https://github.com/nutdnuy/option-pricing-models
   branch: main
+
+# Author identity and LinkedIn supplied by the site owner.
+author_profile:
+  name: Triphop Mahithitarmmatorn
+  label: ผู้เขียนต้นฉบับ · QuantCorner
+  bio: "ผู้เขียนบทความ “แบบจำลองการกำหนดราคาออปชัน: จากบาเชอลิเยถึงการประมาณค่าออปชันแบบอเมริกัน” ซึ่งเป็นต้นฉบับของซีรีส์นี้"
+  linkedin: https://www.linkedin.com/in/triphop-mahithitarmmatorn-0745763a7/
+  website: https://www.quant-corner.com/
+  facebook: https://www.facebook.com/quantcornerthailand/
+  discord: https://discord.gg/ab7AvyGu5

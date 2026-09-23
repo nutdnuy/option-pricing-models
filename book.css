@@ -93,6 +93,6 @@
 .book-main .author-copy>p:not(.author-label){font-size:15px;line-height:1.85;margin:0 0 12px}
 .book-main .author-copy .author-invitation{color:var(--muted);font-size:14px}
 .author-links{display:flex;flex-wrap:wrap;gap:4px 24px}
-.author-links a{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:14px;text-underline-offset:4px}
+.author-links a{display:inline-flex;align-items:center;gap:6px;min-height:48px;font-size:14px;text-underline-offset:4px}
 @media(max-width:800px){.author-card{padding:20px;gap:16px;flex-direction:column}.author-portrait{width:88px;height:88px}.book-main .author-card h2{font-size:20px}}
 @media print{.author-card{break-inside:avoid}}
