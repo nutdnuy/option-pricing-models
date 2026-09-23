@@ -4,6 +4,7 @@ const path=require('node:path');
 const yaml=require('yaml');
 const esbuild=require('esbuild');
 const katex=require('./assets/katex/katex.js');
+const {createReferences}=require('./scripts/references.cjs');
 const root=__dirname;
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const plain=s=>s.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
@@ -11,12 +12,10 @@ const slug=s=>plain(s).toLowerCase().replace(/[^\p{L}\p{N}]+/gu,'-').replace(/^-
 const cleanTex=tex=>tex
  .replace(/\\label\{[^}]+\}/g,'')
  .replace(/\\begin\{(?:equation\*?|displaymath)\}|\\end\{(?:equation\*?|displaymath)\}/g,'')
- .replace(/\\begin\{align\*?\}/g,'\\begin{aligned}')
- .replace(/\\end\{align\*?\}/g,'\\end{aligned}')
  .replace(/\\begin\{multline\*?\}/g,'\\begin{aligned}')
  .replace(/\\end\{multline\*?\}/g,'\\end{aligned}')
  .trim();
-const renderMath=(tex,displayMode)=>katex.renderToString(cleanTex(tex),{displayMode,throwOnError:false,output:'htmlAndMathml',strict:'ignore'});
+const renderMath=(tex,displayMode)=>katex.renderToString(cleanTex(tex),{displayMode,throwOnError:true,output:'htmlAndMathml',strict:'ignore'});
 function safeFile(file){if(!/^[a-z0-9][a-z0-9-]*$/.test(file))throw Error(`Use a simple filename without extension: ${file}`);return file;}
 async function build(){
  const {marked}=await import('marked');
@@ -36,21 +35,31 @@ async function build(){
  const toc=yaml.parse(fs.readFileSync(path.join(root,'_toc.yml'),'utf8'));
  const sourcePages=[{file:toc.root},...(toc.chapters||[])];
  const seen=new Set();
- const pages=sourcePages.map((item,index)=>{
+ const documents=sourcePages.map((item,index)=>{
   const file=safeFile(item.file);if(seen.has(file))throw Error(`Duplicate page: ${file}`);seen.add(file);
   let source=fs.readFileSync(path.join(root,file+'.md'),'utf8'),meta={};
   const fm=source.match(/^---\n([\s\S]*?)\n---\n/);if(fm){meta=yaml.parse(fm[1]);source=source.slice(fm[0].length);}
-  source=source.replace(/<a href="#[^"]+"[^>]*>([\s\S]*?)<\/a>/g,'$1');
+  return {item,index,file,source,meta,href:index===0?'index.html':file+'.html'};
+ });
+ const references=createReferences(documents);
+ const pages=documents.map(({item,index,file,source,meta,href})=>{
   const equations=[];
-  source=source.replace(/\$\$([\s\S]+?)\$\$/g,(_,tex)=>{const n=equations.length;equations.push(renderMath(tex,true));return `<div class="equation math-display" tabindex="0" role="group" aria-label="สมการ" data-math="${n}">EQUATION_${n}_END</div>`;});
+  source=source.replace(/\$\$([\s\S]+?)\$\$/g,(_,tex)=>{const n=equations.length,ref=references.equation(tex);equations.push(renderMath(ref.tex,true));return `<div class="equation math-display" tabindex="0" role="group" aria-label="${escape(ref.label)}" data-math="${n}">${ref.anchors}EQUATION_${n}_END</div>`;});
+  source=references.resolve(source);
   const inlineEquations=[];
   if(meta.inline_math===true){
    source=source.replace(/\\\(([\s\S]+?)\\\)/g,(_,tex)=>{const n=inlineEquations.length;inlineEquations.push(renderMath(tex,false));return `INLINEEQUATION${n}END`;});
    source=source.replace(/(?<!\\)\$(?!\$)([^\n$]+?)(?<!\\)\$/g,(_,tex)=>{const n=inlineEquations.length;inlineEquations.push(renderMath(tex,false));return `INLINEEQUATION${n}END`;});
   }
   let body=marked.parse(source).replace(/INLINEEQUATION(\d+)END/g,(_,i)=>inlineEquations[Number(i)]).replace(/EQUATION_(\d+)_END/g,(_,i)=>equations[Number(i)]).replaceAll('<pre>','<pre tabindex="0" aria-label="ตัวอย่างโค้ด Python">');
-  const headings=[],ids=new Map();
-  body=body.replace(/<h([1-3])>([\s\S]*?)<\/h\1>/g,(_,level,text)=>{let base=slug(text)||'heading',n=(ids.get(base)||0)+1;ids.set(base,n);const id=n===1?base:`${base}-${n}`;if(level==='2')headings.push({id,title:plain(text)});return `<h${level} id="${id}">${text}</h${level}>`;});
+  body=body.replace(/<table\b[\s\S]*?<\/table>/g,table=>`<div class="table-scroll" tabindex="0" role="region" aria-label="ตารางข้อมูล เลื่อนซ้ายขวาเพื่ออ่าน">${table}</div>`);
+  const headings=[],ids=new Set([...body.matchAll(/\bid=["']([^"']+)["']/g)].map(match=>match[1]));
+  body=body.replace(/<h([1-3])([^>]*)>([\s\S]*?)<\/h\1>/g,(_,level,attributes,text)=>{
+   let id=attributes.match(/\bid=["']([^"']+)["']/)?.[1];
+   if(!id){const base=slug(text)||'heading';id=base;let n=1;while(ids.has(id))id=`${base}-${++n}`;ids.add(id);attributes+=` id="${id}"`;}
+   if(level==='2')headings.push({id,title:plain(text)});
+   return `<h${level}${attributes}>${text}</h${level}>`;
+  });
   body=body.replace(/href="([a-z0-9-]+)\.md(#[^"]*)?"(?! download)/g,(_,file,hash='')=>`href="${file===toc.root?'index':file}.html${hash}"`);
   body=body.replace(/<a href="glossary\.html#[^"]+"/g,link=>link+' class="glossary-link"');
   return {file,href:index===0?'index.html':file+'.html',title:item.title||meta.title||file,description:meta.description||config.title,notebook:meta.notebook||config.notebook,body,headings,home:index===0};

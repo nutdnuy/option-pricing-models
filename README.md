@@ -30,3 +30,7 @@ The preview runs at http://127.0.0.1:8766/. With it running, use `npm run check:
 | `glossary.md` | Stable definitions used across the site |
 
 The original user-supplied PDF is retained under `downloads/`. Generated root HTML/JavaScript and `_site/` are build outputs.
+
+## Public review
+
+The web lessons include documented mathematical and editorial corrections. See [the September 2026 review](data/public-review-2026-09-23.md). Original source figures and the downloadable paper remain unchanged. `build:pages` validates equation references and local anchors; `check:site` checks actual desktop/mobile viewports in light and dark themes.

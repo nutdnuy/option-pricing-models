@@ -17,7 +17,7 @@ description: แบบจำลองการกำหนดราคาออ�
 <li><strong>1900</strong><span>Bachelier</span></li><li><strong>1973</strong><span>Black–Scholes–Merton</span></li><li><strong>1976</strong><span>Black-76</span></li><li><strong>1979–86</strong><span>Binomial & Trinomial</span></li><li><strong>1987–93</strong><span>American Approximations</span></li>
 </ol>
 
-<div class="welcome-preparation"><h3>ก่อนเริ่ม</h3><p>ควรคุ้นกับมูลค่าเวลา ความผันผวน การแจกแจงปกติ และแนวคิด No-arbitrage เนื้อหานี้อธิบายแบบจำลองและข้อสมมติ ไม่ใช่คำแนะนำลงทุนหรือราคาที่ใช้ซื้อขายได้ทันที</p></div>
+<div class="welcome-preparation"><h2>ก่อนเริ่ม</h2><p>ควรคุ้นกับมูลค่าเวลา ความผันผวน การแจกแจงปกติ และแนวคิด No-arbitrage เนื้อหานี้อธิบายแบบจำลองและข้อสมมติ ไม่ใช่คำแนะนำลงทุนหรือราคาที่ใช้ซื้อขายได้ทันที</p></div>
 
 <h2 id="lessons">บทเรียน 5 ตอน</h2>
 

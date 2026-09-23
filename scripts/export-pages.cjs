@@ -42,6 +42,18 @@ function walk(directory) {
 }
 const packageName = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8')).name;
 const origin = `https://example.invalid/${packageName}/`;
+const htmlIds = new Map();
+for (const file of walk(output).filter(file => file.endsWith('.html'))) {
+  const text = fs.readFileSync(file, 'utf8');
+  const ids = new Set();
+  for (const [, id] of text.matchAll(/\bid=["']([^"']+)["']/g)) {
+    assert.ok(!ids.has(id), `${path.relative(output, file)}: duplicate ID ${id}`);
+    ids.add(id);
+  }
+  assert.ok(!/\[(?:eq|tab):[^\]]+\]/.test(text), `${path.relative(output, file)}: unresolved source reference`);
+  assert.ok(!text.includes('class="katex-error"'), `${path.relative(output, file)}: invalid equation`);
+  htmlIds.set(file, ids);
+}
 for (const file of walk(output).filter(file => /\.(html|css)$/.test(file))) {
   const relative = path.relative(output, file).split(path.sep).join('/');
   const text = fs.readFileSync(file, 'utf8');
@@ -49,12 +61,16 @@ for (const file of walk(output).filter(file => /\.(html|css)$/.test(file))) {
     ? [...text.matchAll(/(?:href|src)=["']([^"']+)["']/g)].map(match => match[1])
     : [...text.matchAll(/url\(\s*["']?([^\s"')]+)["']?\s*\)/g)].map(match => match[1]);
   for (const ref of refs) {
-    if (/^(?:[a-z][a-z0-9+.-]*:|\/\/|#)/i.test(ref)) continue;
+    if (/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(ref)) continue;
     const url = new URL(ref.replaceAll('&amp;', '&'), new URL(relative, origin));
     assert.ok(url.href.startsWith(origin), `${relative}: link escapes the project path: ${ref}`);
     let target = decodeURIComponent(url.pathname.slice(new URL(origin).pathname.length));
     if (!target || target.endsWith('/')) target += 'index.html';
     assert.ok(fs.existsSync(path.join(output, target)), `${relative}: missing ${ref}`);
+    if (url.hash && target.endsWith('.html')) {
+      const id = decodeURIComponent(url.hash.slice(1));
+      assert.ok(htmlIds.get(path.join(output, target))?.has(id), `${relative}: missing anchor ${ref}`);
+    }
     checked++;
   }
 }

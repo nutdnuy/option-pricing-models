@@ -30,3 +30,11 @@ export function bachelierCall({forward,strike,rate,normalVol,time}){
   const d=(forward-strike)/scale;
   return Math.exp(-rate*time)*((forward-strike)*normCdf(d)+scale*normPdf(d));
 }
+
+// Use an additive strike range so zero and negative Bachelier forwards remain visible.
+export function optionStrikeGrid({underlying,allowNegative=false}){
+  const span=Math.max(20,Math.abs(underlying)*0.4);
+  const lower=allowNegative?underlying-span:Math.max(1,underlying-span);
+  const upper=Math.max(lower+1,underlying+span);
+  return Array.from({length:41},(_,i)=>lower+(upper-lower)*i/40);
+}

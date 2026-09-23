@@ -4,12 +4,23 @@
   "private": true,
   "scripts": {
     "build": "node build.cjs",
-    "build:pages": "npm run build && node scripts/export-pages.cjs",
+    "build:pages": "npm run build && node scripts/export-pages.cjs && node qa/reference-checks.cjs",
     "test": "node qa/math-checks.mjs",
     "dev": "PORT=8766 node serve.cjs",
-    "check:site": "node qa/site-checks.cjs"
+    "check:site": "node qa/site-checks.cjs && node qa/option-lab-checks.cjs"
   },
-  "engines": { "node": ">=22" },
-  "dependencies": { "react": "19.2.6", "react-dom": "19.2.6", "yaml": "2.8.1" },
-  "devDependencies": { "axe-core": "^4.11.4", "esbuild": "^0.27.0", "marked": "^17.0.0", "playwright": "^1.62.1" }
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "yaml": "2.8.1"
+  },
+  "devDependencies": {
+    "axe-core": "^4.11.4",
+    "esbuild": "^0.27.0",
+    "marked": "^17.0.0",
+    "playwright": "^1.62.1"
+  }
 }

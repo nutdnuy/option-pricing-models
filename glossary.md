@@ -6,7 +6,7 @@ description: คำศัพท์สำคัญในแบบจำลอง�
 # อภิธานศัพท์
 
 <section class="glossary-group" data-glossary-group="pricing">
-## Pricing foundations
+<h2>Pricing foundations</h2>
 <section class="glossary-term" id="payoff"><h3>Payoff</h3><p>กระแสเงินสดของออปชัน ณ เวลาที่ใช้สิทธิหรือครบกำหนด เช่น Call payoff เท่ากับ max(S − K, 0) ซึ่งยังไม่หัก Option premium</p></section>
 <section class="glossary-term" id="european-option"><h3>European option</h3><p>ออปชันที่ใช้สิทธิได้เฉพาะวันครบกำหนด</p></section>
 <section class="glossary-term" id="american-option"><h3>American option</h3><p>ออปชันที่ใช้สิทธิได้ทุกเวลาก่อนหรือ ณ วันครบกำหนด จึงเกี่ยวข้องกับปัญหา Optimal stopping</p></section>
